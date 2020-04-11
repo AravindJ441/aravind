@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiPath: "http://srtapi-uat.callhealth.com",
+  apiPath: "https://srt-nanobrains.herokuapp.com",
+
 };
