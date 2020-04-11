@@ -1,0 +1,18 @@
+@import "variables.scss";
+
+.page-forbidden-wrapper {
+  margin-top: 200px;
+  text-align: center;
+  
+  .text-danger {
+    color: $red;
+  }
+  
+  .text-muted {
+    color: #6c757d;
+  }
+
+  .mT20 {
+    margin-top: 20px;
+  }
+}

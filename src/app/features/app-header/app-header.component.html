@@ -1,0 +1,50 @@
+<div class="header-content-wrapper">
+  <div class="nav-tab-wrapper">
+    <div class="app-title">
+      <span [routerLink]="['dashboard/graph']">SRT</span>
+    </div>
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link class="mat-tab-link" [routerLink]="['/dashboard/graph']"
+        [routerLinkActive]="['mat-tab-label-active']"
+      >
+        Dashboard Graph
+      </a>
+
+      <a mat-tab-link class="mat-tab-link" [routerLink]="['/dashboard/list']"
+        [routerLinkActive]="['mat-tab-label-active']"
+      >
+        Dashboard List
+      </a>
+
+      <a mat-tab-link class="mat-tab-link" [routerLink]="['/social-platform/facebook']"
+        [routerLinkActive]="['mat-tab-label-active']"
+      >
+        Facebook
+      </a>
+
+      <a mat-tab-link class="mat-tab-link" [routerLink]="['/social-platform/twitter']"
+        [routerLinkActive]="['mat-tab-label-active']"
+      >
+        Twitter
+      </a>
+
+      <a mat-tab-link class="mat-tab-link" [routerLink]="['/social-platform/instagram']"
+        [routerLinkActive]="['mat-tab-label-active']"
+      >
+        Instagram
+      </a>
+
+      <a mat-tab-link class="mat-tab-link" [routerLink]="['/social-platform/app-store']"
+        [routerLinkActive]="['mat-tab-label-active']"
+      >
+        App Store
+      </a>
+
+      <a mat-tab-link class="mat-tab-link" [routerLink]="['/social-platform/play-store']"
+        [routerLinkActive]="['mat-tab-label-active']"
+      >
+        Play Store
+      </a>
+    </nav>
+  </div>
+</div>

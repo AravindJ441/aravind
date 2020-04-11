@@ -1,0 +1,43 @@
+@import "variables.scss";
+.header-content-wrapper {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  padding: 10px 0 10px 20px;
+  background-color: #f4f4f4;
+
+  .nav-tab-wrapper {
+    line-height: 1.65;
+    .app-title {
+      display: inline-block;
+      cursor: pointer;
+      :focus {
+        outline: none;
+      }
+    }
+
+    nav {
+      display: inline-block;
+      margin-left: 50px;
+      .mat-tab-link {
+        opacity: 1;
+        border-right: $tab-borders;
+        color: $nav-color;
+        height: $nav-height;
+        font-size: $nav-font;
+        min-width: $nav-width;
+        font-weight: 300;
+        padding: 0 10px;
+        text-decoration: none;
+        &:last-of-type {
+          border-right: none;
+        }
+      }
+      .mat-tab-label-active {
+        color: $nav-act-color;
+        font-weight: bold;
+        font-size: 15px;
+      }
+    }
+  }
+}

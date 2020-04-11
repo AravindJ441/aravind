@@ -1,0 +1,51 @@
+<form [formGroup]="iStoreForm" novalidate #f="ngForm">
+  <h1 mat-dialog-title>Add/Edit App Store Setting</h1>
+  <div class="border" mat-dialog-content>
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="App Name" formControlName="name">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="App Id" formControlName="app_id">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-select-autocomplete class="grid-7-11"
+        [placeholder]="'Select Countries'"
+        [errorMsg]="errorMessage"
+        [showErrorMsg]="showError"
+        [options]="countryList"
+        [display]="'display'"
+        [value]="'value'"
+        [multiple]='true'
+        [labelCount]="2"
+        [selectedOptions]="selectedOptions"
+        (selectionChange)="getSelectedOptions($event)">
+      </mat-select-autocomplete>
+      <!-- <ng-select formControlName="country"
+        [allowClear]="true"
+        [multiple]="true"
+        [items]="countryList"
+        (data)="refreshValue($event)"
+        (selected)="selected($event)"
+        (removed)="removed($event)"
+        placeholder="Select Countries">
+      </ng-select> -->
+    </div>
+
+    <p class="text-muted">*No auto reply available for iTunes.</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button class="cancel" (click)="onCancel()">Cancel</button>
+    <button mat-button class="submit"
+      (click)="doSubmit()"
+      [disabled]="!f.form.valid || selected.length == 0"
+    >
+      {{ (data) ? 'Update' : 'Add' }}
+    </button>
+  </div>
+</form>

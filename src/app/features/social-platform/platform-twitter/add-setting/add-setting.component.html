@@ -1,0 +1,20 @@
+<form [formGroup]="twitterSettingForm" novalidate>
+  <h1 mat-dialog-title>Add/Edit Twitter Setting</h1>
+  <div class="border" mat-dialog-content>
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Hashtag, Handle or Phrase" formControlName="term">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-checkbox formControlName="auto_reply">
+        Auto Reply
+      </mat-checkbox>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button class="cancel" (click)="onCancel()">Cancel</button>
+    <button mat-button class="submit" (click)="doSubmit()">{{ (data) ? 'Update' : 'Add' }}</button>
+  </div>
+</form>

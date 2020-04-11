@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Update Suggestion</h1>
+<div class="border" mat-dialog-content>
+  <ng-container *ngFor="let suggestion of suggestionList">
+    <button *ngIf="suggestion !== systemSuggestion" 
+      mat-button class="submit"
+      (click)="onSuggestionClicked(suggestion)"
+    >
+      {{ suggestion | titlecase }}
+    </button>
+  </ng-container>
+</div>
+<div mat-dialog-actions>
+  <button mat-button class="cancel" (click)="onCloseClicked()">Close</button>
+</div>

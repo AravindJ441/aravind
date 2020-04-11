@@ -1,0 +1,109 @@
+@import "variables.scss";
+
+.dashboard-wrapper {
+  padding: 0 40px;
+
+  .filter-form-wrapper {
+    mat-form-field {
+      padding: 0 5px;
+      max-width: 160px;
+    }
+    button {
+      border-radius: 50px;
+      padding: 2px 36px;
+      &.submit {
+        background-color: $act-color;
+        color: $default-white;
+        margin-right: 5px;
+      }
+      &.cancel {
+        background-color: #f4f4f4;
+        color: $default-black;
+      }
+    }
+  }
+
+  .table-wrapper {
+    margin-top: 15px;
+    table {
+      width: 100%;
+
+      th {
+        text-align: center;
+        span.record-count {
+          float: right;
+          strong {
+            font-size: 16px;
+          }
+        }
+      }
+      td {
+        padding: 2px 5px;
+        text-align: left;
+        span {
+          padding: 0 5px;
+          cursor: pointer;
+          &.ng-star-inserted {
+            cursor: auto;
+            padding: 0;
+          }
+          &.app-link {
+            padding: 0;
+          }
+          &.ok-btn:after {
+            content: "\2713";
+          }
+          &.change-btn:after {
+            content: ' \270E';
+            display: inline-block;
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+          }
+        }
+        &.comment-wrapper {
+          p {
+            margin: 5px 0;
+            font-weight: bold;
+            span {
+              float: right;
+              font-weight: normal;
+            }
+          }
+        }
+        &.break-word {
+          -ms-word-break: break-all;
+          word-break: break-all;
+          word-break: break-word;
+        }
+      }
+    }
+    .pagination-wrapper {
+      text-align: right;
+    }
+    .width-15 {
+      width: 15%;
+    }
+    .width-20 {
+      width: 20%;
+    }
+    .width-25 {
+      width: 25%;
+    }
+    .width-40 {
+      width: 40%;
+    }
+    .anchor {
+      color: $anchor-color;
+      a {
+        text-decoration: none;
+        margin-right: 10px;
+      }
+    }
+    .clearfix {
+      clear: both;
+    }
+  }
+}

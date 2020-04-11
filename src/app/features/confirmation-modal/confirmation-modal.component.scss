@@ -1,0 +1,30 @@
+@import "variables.scss";
+
+.mat-dialog-actions {
+  text-align: center;
+
+  button {
+    border-radius: 50px;
+    padding: 2px 36px;
+    &.cancel {
+      background-color: #f4f4f4;
+      color: $default-black;
+    }
+    &.submit {
+      background-color: $act-color;
+      color: $default-white;
+    }
+  }
+}
+
+.border {
+  padding-top: 2em;
+  border-bottom: 1px solid #dcd9d9;
+  border-top: 1px solid #dcd9d9;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin: 0px 10px 20px 10px;
+}

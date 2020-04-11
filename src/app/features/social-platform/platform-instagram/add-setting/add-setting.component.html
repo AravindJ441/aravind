@@ -1,0 +1,32 @@
+<form [formGroup]="instaSettingForm" novalidate>
+  <h1 mat-dialog-title>Add/Edit Instagram Setting</h1>
+  <div class="border" mat-dialog-content>
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="App Name" formControlName="name">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Page Id" formControlName="page_id">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Access Token" formControlName="accesstoken">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-checkbox formControlName="auto_reply">
+        Auto Reply
+      </mat-checkbox>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button class="cancel" (click)="onCancel()">Cancel</button>
+    <button mat-button class="submit" (click)="doSubmit()">{{ (data) ? 'Update' : 'Add' }}</button>
+  </div>
+</form>

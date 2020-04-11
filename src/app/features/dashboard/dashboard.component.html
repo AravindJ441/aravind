@@ -1,0 +1,133 @@
+<div class="dashboard-wrapper">
+  <h3>Dashboard</h3>
+
+  <div class="filter-form-wrapper">
+    <h4>Filters</h4>
+    <form [formGroup]="filterForm" novalidate>
+      <mat-form-field>
+        <mat-label>Source</mat-label>
+        <mat-select formControlName="source">
+          <!-- <mat-option [value]='' selected=true>All</mat-option> -->
+          <mat-option *ngFor="let platform of platformList" [value]="platform.key">
+            {{platform.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Suggestion</mat-label>
+        <mat-select formControlName="suggestion">
+          <mat-option *ngFor="let suggestion of suggestionList" [value]="suggestion.key">
+            {{suggestion.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput readonly [matDatepicker]="startPicker" placeholder="Start Date"
+          formControlName="fromDate" [max]="maxStartDate" (dateChange)="onDateChanged('dateFrom', $event.value)">
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput readonly [matDatepicker]="endPicker" placeholder="End Date"
+          formControlName="toDate" [min]="minEndDate" [max]="maxDate" (dateChange)="onDateChanged('dateTo', $event.value)">
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Customer Name" formControlName="customerName">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Search by Comment" formControlName="customer_comment">
+      </mat-form-field>
+
+      <button mat-button class="submit" (click)="getPageData()">Filter</button>
+      <button mat-button class="cancel" (click)="resetFilter()">Reset</button>
+    </form>
+  </div>
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="dataList | paginate: {id: 'server', itemsPerPage: pageSize, currentPage: page, totalItems: totalRecords}">
+        <!-- source column -->
+        <ng-container matColumnDef="source">
+          <th mat-header-cell *matHeaderCellDef class="width-15"> Source </th>
+          <td mat-cell *matCellDef="let element">
+              <img src="assets/images/{{ element?.source.toLowerCase() }}.png" style="display: inline-block;" alt="">
+              <div style="display: inline-block;" 
+                [innerHtml]="displayAppName(element.source, element.app_name, element.source_link)"
+              ></div>
+          </td>
+        </ng-container>
+
+        <!-- comment Column -->
+        <ng-container matColumnDef="comment">
+          <th mat-header-cell *matHeaderCellDef class="width-40"> Comment </th>
+          <td mat-cell class="comment-wrapper" *matCellDef="let element">
+            <p>{{ element?.customer_name }} <span>{{ displayDate(element.customer_posted_at) }}</span></p>
+            <p *ngIf="element?.source.toLowerCase() === 'appstore'">{{ element?.customer_comment_title }}</p>
+            <div class="break-word">
+              {{ element?.customer_comment }}
+            </div>
+            <div *ngIf="element?.customer_ratings">
+              <span *ngFor="let i of [1,2,3,4,5]">
+                <img src="assets/images/star_fb_fill_icon.png" *ngIf="i <= element.customer_ratings">
+                <img src="assets/images/star_fb_gray_icon@2x.png" *ngIf="i > element.customer_ratings">
+              </span>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- autoreply Column -->
+        <ng-container matColumnDef="autoreply">
+          <th mat-header-cell *matHeaderCellDef class="width-25"> Auto Reply </th>
+          <td mat-cell *matCellDef="let element">
+            <p *ngIf="element?.auto_reply_posted_at">
+              Replied on {{ displayDate(element.auto_reply_posted_at) }}
+            </p>
+            <div class="break-word">
+              {{ element?.auto_reply_content }}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef class="width-20 clearfix">
+            Action
+            <span class="record-count">
+              <strong>{{ totalRecords }}</strong> records
+            </span>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <ng-container *ngIf="element?.admin_suggested_at; else defaultSuggestion">
+              <div class="suggestion" [title]="(element?.admin_approved_by) ? element?.admin_approved_by?.first_name : ''">
+                {{ element?.admin_suggestion | titlecase }}
+              </div>
+            </ng-container>
+            <ng-template #defaultSuggestion>
+                <div class="suggestion">
+                  {{ element?.suggestion | titlecase }}
+                  (
+                    <span class="change-btn" (click)="openSuggestionModal(element._id, element.suggestion)"></span>
+                    <span class="ok-btn" (click)="updateSuggestion(element._id, element.suggestion)"></span>
+                  )
+                </div>
+            </ng-template>
+            <div class="anchor">
+              <a [href]="element.comment_link" target="_blank">View</a>
+              <a [href]="element.crm_link" target="_blank">CRM Link</a>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div class="pagination-wrapper">
+      <pagination-controls (pageChange)="getPageData($event)" id="server"></pagination-controls>
+    </div>
+  </div>
+</div>

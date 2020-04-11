@@ -1,0 +1,53 @@
+<div class="dashboard-graph-wrapper">
+
+  <div class="filter-form-wrapper">
+    <h4>Filters</h4>
+    <form [formGroup]="filterForm" novalidate>
+
+      <mat-form-field>
+        <input matInput readonly [matDatepicker]="startPicker" placeholder="Start Date"
+          formControlName="fromDate" [max]="maxStartDate" (dateChange)="onDateChanged('dateFrom', $event.value)">
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput readonly [matDatepicker]="endPicker" placeholder="End Date"
+          formControlName="toDate" [min]="minEndDate" [max]="maxDate" (dateChange)="onDateChanged('dateTo', $event.value)">
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-button class="submit" (click)="fetchPlatformGraphData();fetchGroupData();">Filter</button>
+      <button mat-button class="cancel" (click)="resetFilter()">Reset</button>
+    </form>
+  </div>
+
+  <div class="row">
+    <div class="chart-wrapper" id="platformPieChart"></div>
+    <div class="chart-wrapper" id="suggestionPieChart"></div>
+  </div>
+
+  <div class="row">
+    <div class="platform-chart-wrapper" id="appstoreWrapper"></div>
+    <div class="platform-chart-wrapper" id="facebookWrapper"></div>
+    <div class="platform-chart-wrapper" id="instagramWrapper"></div>
+    <div class="platform-chart-wrapper" id="playstoreWrapper"></div>
+    <div class="platform-chart-wrapper" id="twitterWrapper"></div>
+    <!-- <div class="platform-chart-wrapper">
+      <platform-graph [platform]="'appstore'" [data]="platformGroupData[0]"></platform-graph>
+    </div>
+    <div class="platform-chart-wrapper">
+      <platform-graph [platform]="'facebook'" [data]="platformGroupData[1]"></platform-graph>
+    </div>
+    <div class="platform-chart-wrapper">
+      <platform-graph [platform]="'instagram'" [data]="platformGroupData[2]"></platform-graph>
+    </div>
+    <div class="platform-chart-wrapper">
+      <platform-graph [platform]="'playstore'" [data]="platformGroupData[3]"></platform-graph>
+    </div>
+    <div class="platform-chart-wrapper">
+      <platform-graph [platform]="'twitter'" [data]="platformGroupData[4]"></platform-graph>
+    </div> -->
+  </div>
+</div>

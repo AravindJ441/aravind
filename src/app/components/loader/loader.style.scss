@@ -1,0 +1,106 @@
+// @import "../../variables.scss";
+@import "variables";
+
+.cssload-container {
+    text-align: center;
+    position: fixed;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.8);
+    height: 100%;
+    width: 100%;
+}
+
+div.load-text {
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 44%;
+    border-radius: 20px;
+    padding: 14px 4px;
+
+    p {
+        margin: 0;
+        font-size: $loading-text;
+        color: $default-white;
+    }
+}
+
+.cssload-zenith {
+    // width: 31px;
+    // height: 31px;
+    position: relative;
+    top: 50%;
+    margin: 0 auto;
+
+    img {
+        width: 100px;
+    }
+
+    // border-radius: 50%;
+    // border-top-color: transparent;
+    // border-left-color: transparent;
+    // border-right-color: transparent;
+    // box-shadow: 2px 2px 1px rgb(117, 231, 235);
+    // animation: cssload-spin 690ms infinite linear;
+    // -o-animation: cssload-spin 690ms infinite linear;
+    // -ms-animation: cssload-spin 690ms infinite linear;
+    // -webkit-animation: cssload-spin 690ms infinite linear;
+    // -moz-animation: cssload-spin 690ms infinite linear;
+}
+
+@keyframes cssload-spin {
+    100% {
+        transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes cssload-spin {
+    100% {
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-ms-keyframes cssload-spin {
+    100% {
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes cssload-spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes cssload-spin {
+    100% {
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: $mobile-width) {
+    div.load-text {
+        width: 95%;
+        top: 55%;
+
+        p {
+            font-size: $font-medium;
+        }
+    }
+}
+
+@media screen and (max-width: $mobile-width) {
+    div.load-text {
+        top: 30%;
+    }
+
+    .cssload-zenith {
+        top: 40%;
+    }
+}

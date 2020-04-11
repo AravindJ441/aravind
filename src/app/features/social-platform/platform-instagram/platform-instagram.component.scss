@@ -1,0 +1,22 @@
+@import "variables.scss";
+
+.instagram-wrapper {
+  padding: 0 40px;
+
+  .added-settings {
+    margin-top: 15px;
+    table {
+      width: 100%;
+      th, td {
+        text-align: center;
+      }
+      td {
+        span {
+          padding: 0 5px;
+          cursor: pointer;
+          color: $anchor-color;
+        }
+      }
+    }
+  }
+}

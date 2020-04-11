@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div class="border" mat-dialog-content>
+  <div class="row break-word">
+    {{ data.displayData }}
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button class="cancel" (click)="onCancel()">Close</button>
+</div>

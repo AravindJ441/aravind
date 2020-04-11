@@ -1,0 +1,66 @@
+<div class="facebook-wrapper">
+  <h3>Facebook Settings</h3>
+  <button color="primary" mat-raised-button="" class="mat-raised-button mat-primary" (click)="openSettingModal()">
+    <span class="mat-button-wrapper">Add New</span>
+  </button>
+
+  <div class="added-settings">
+    <table mat-table [dataSource]="dataList">
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="is_active">
+        <th mat-header-cell *matHeaderCellDef class="width-5"> Status </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="status" [ngClass]="(element?.is_active)?'active': 'in-active'"></span>
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="width-15"> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- Page Id Column -->
+      <ng-container matColumnDef="page_id">
+        <th mat-header-cell *matHeaderCellDef class="width-15"> Page Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.page_id}} </td>
+      </ng-container>
+
+      <!-- Page Access Token Column -->
+      <ng-container matColumnDef="pageAccessToken">
+        <th mat-header-cell *matHeaderCellDef class="width-15"> Page Access Token </th>
+        <td mat-cell *matCellDef="let element">
+          <span (click)="openInfoModal(element.pageAccessToken)">View</span>
+        </td>
+      </ng-container>
+
+      <!-- Create at Column -->
+      <ng-container matColumnDef="created_at">
+        <th mat-header-cell *matHeaderCellDef class="width-20"> Date Created </th>
+        <td mat-cell *matCellDef="let element"> {{ displayDate(element.created_at) }} </td>
+      </ng-container>
+
+      <!-- Auto Reply -->
+      <ng-container matColumnDef="auto_reply">
+        <th mat-header-cell *matHeaderCellDef class="width-10"> Auto Reply </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-checkbox [checked]="element?.auto_reply" [disabled]=true></mat-checkbox>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="width-20"> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <span (click)="openSettingModal(element)">Edit</span>
+          <span (click)="toggleStatus(element._id)">{{ (element.is_active) ? 'Deactivate' : 'Activate' }}</span>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

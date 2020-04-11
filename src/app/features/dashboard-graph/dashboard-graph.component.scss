@@ -1,0 +1,38 @@
+@import "variables.scss";
+
+.dashboard-graph-wrapper {
+    padding: 0 40px;
+    width: 90%;
+    .filter-form-wrapper {
+      mat-form-field {
+        padding: 0 5px;
+      }
+      button {
+        border-radius: 50px;
+        padding: 2px 36px;
+        &.submit {
+          background-color: $act-color;
+          color: $default-white;
+          margin-right: 5px;
+        }
+        &.cancel {
+          background-color: #f4f4f4;
+          color: $default-black;
+        }
+      }
+    }
+
+    .row {
+      width: 100%;
+      .chart-wrapper {
+        display: inline-block;
+        width: 50%;
+        height: 350px;
+      }
+      .platform-chart-wrapper {
+        display: inline-block;
+        width: 20%;
+        height: 300px;
+      }
+    }
+}

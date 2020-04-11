@@ -1,0 +1,23 @@
+@import "variables.scss";
+
+.twitter-wrapper {
+  padding: 0 40px;
+
+  .added-settings {
+    margin-top: 15px;
+    table {
+      width: 100%;
+      th, td {
+        text-align: center;
+      }
+      td {
+        padding: 2px 5px;
+        span {
+          padding: 0 5px;
+          cursor: pointer;
+          color: $anchor-color;
+        }
+      }
+    }
+  }
+}

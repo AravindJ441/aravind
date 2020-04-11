@@ -1,0 +1,38 @@
+<form [formGroup]="pStoreForm" novalidate>
+  <h1 mat-dialog-title>Add/Edit Play Store Setting</h1>
+  <div class="border" mat-dialog-content>
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="App Name" formControlName="name">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Package Name" formControlName="packagename">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Client Email" formControlName="client_email">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Private Key" formControlName="private_key">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-checkbox formControlName="auto_reply">
+        Auto Reply
+      </mat-checkbox>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button class="cancel" (click)="onCancel()">Cancel</button>
+    <button mat-button class="submit" (click)="doSubmit()">{{ (data) ? 'Update' : 'Add' }}</button>
+  </div>
+</form>
