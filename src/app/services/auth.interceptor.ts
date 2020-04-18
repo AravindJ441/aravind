@@ -19,14 +19,21 @@ export class ServerURLInterceptor implements HttpInterceptor {
     this.accessToken = localStorage.getItem("token");
   }
 
+  getWithAuthHeaders = (req) => {
+    if (this.accessToken) {
+
+      /* Pass on the cloned request instead of the original request. */
+      return req.clone({
+        headers: req.headers.set('token', this.accessToken),
+      });
+    }
+    return req;
+  }
+
   intercept = ((req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> => {
 
-    /* Pass on the cloned request instead of the original request. */
-    const authReq = req.clone({
-      headers: req.headers.set('token', this.accessToken),
-    });
 
-    return next.handle(authReq).pipe(
+    return next.handle(this.getWithAuthHeaders(req)).pipe(
       catchError(error => {
         console.log(error);
         let formattedError = error.error;
