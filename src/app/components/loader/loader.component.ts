@@ -8,12 +8,14 @@ import { DOCUMENT } from '@angular/common';
   template: `
     <ng-container *ngIf="loader$ | async as show">
     <div class="cssload-container">
-      <div class="cssload-zenith">
-        <img src="assets/images/loading.gif">
-      </div>
-      <div class="load-text">
-        <p class="bold">A moment to unwind, as we connect...</p>
-      </div>
+    <div class="cssload-zenith">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+    </div>
     </div>
     </ng-container>
   `,
